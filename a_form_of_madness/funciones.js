@@ -1,9 +1,9 @@
 
   function auto()
     {
-        alert("ee");
+       
         if (!("autofocus" in document.createElement("input"))==false) {
-            alert("3")
+            
            document.getElementById("nombre").focus();
           }
         
