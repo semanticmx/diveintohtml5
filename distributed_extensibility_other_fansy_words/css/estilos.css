@@ -11,8 +11,7 @@ titulo{
     display: flex;
     flex-direction: column;
 }
-componentes
-{
+componentes{
   width: 100%;
   background-color: cornsilk;
   display: flex;
@@ -20,21 +19,18 @@ componentes
   align-items: center;
   margin:0% 1% 1% 1%;
 }
-p1
-{
+p1{
   width: 75%;
   margin-right: 2%;
   text-align: justify;
   font-family: monospace;
   font-size: 20px;
 }
-#im
-{
+#im{
   width: 20%;
   margin-right: 2%;
 }
-#im2
-{
+#im2{
   width: 30%;
   height: 20%;
   
@@ -51,8 +47,7 @@ subtitulo{
   display: flex;
   flex-direction: column;
 }
-contenedor
-{
+contenedor{
   width: 100%;
   background-color: cadetblue;
   display: flex;
@@ -60,8 +55,7 @@ contenedor
   align-items: center;
   margin:0% 1% 1% 1%;
 }
-p2
-{
+p2{
   width: 95%;
   text-align: justify;
   font-family: monospace;
