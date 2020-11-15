@@ -4,9 +4,11 @@ var kPieceWidth = 50;
 var kPieceHeight= 50;
 var kPixelWidth = 1 + (kBoardWidth * kPieceWidth);
 var kPixelHeight= 1 + (kBoardHeight * kPieceHeight);
+
 var gCanvasElement;
 var gDrawingContext;
 var gPattern;
+
 var gPieces;
 var gNumPieces;
 var gSelectedPieceIndex;
@@ -14,11 +16,14 @@ var gSelectedPieceHasMoved;
 var gMoveCount;
 var gMoveCountElem;
 var gGameInProgress;
+
 function Cell(row, column) {
     this.row = row;
     this.column = column;
 }
-function getCursorPosition(e) {   
+
+function getCursorPosition(e) {
+    
     var x;
     var y;
     if (e.pageX != undefined && e.pageY != undefined) {
@@ -36,23 +41,26 @@ function getCursorPosition(e) {
     var cell = new Cell(Math.floor(y/kPieceHeight), Math.floor(x/kPieceWidth));
     return cell;
 }
+
 function halmaOnClick(e) {
     var cell = getCursorPosition(e);
     for (var i = 0; i < gNumPieces; i++) {
-    	if ((gPieces[i].row == cell.row) && 
+	if ((gPieces[i].row == cell.row) && 
 	    (gPieces[i].column == cell.column)) {
 	    clickOnPiece(i);
 	    return;
-    	}
+	}
     }
     clickOnEmptyCell(cell);
 }
+
 function clickOnEmptyCell(cell) {
     if (gSelectedPieceIndex == -1) { return; }
     var rowDiff = Math.abs(cell.row - gPieces[gSelectedPieceIndex].row);
     var columnDiff = Math.abs(cell.column - gPieces[gSelectedPieceIndex].column);
     if ((rowDiff <= 1) &&
-	(columnDiff <= 1)) {	
+	(columnDiff <= 1)) {
+	
 	gPieces[gSelectedPieceIndex].row = cell.row;
 	gPieces[gSelectedPieceIndex].column = cell.column;
 	gMoveCount += 1;
@@ -65,6 +73,7 @@ function clickOnEmptyCell(cell) {
 	 ((rowDiff == 0) && (columnDiff == 2)) ||
 	 ((rowDiff == 2) && (columnDiff == 2))) && 
 	isThereAPieceBetween(gPieces[gSelectedPieceIndex], cell)) {
+	
 	if (!gSelectedPieceHasMoved) {
 	    gMoveCount += 1;
 	}
@@ -78,13 +87,16 @@ function clickOnEmptyCell(cell) {
     gSelectedPieceHasMoved = false;
     drawBoard();
 }
+
 function clickOnPiece(pieceIndex) {
     if (gSelectedPieceIndex == pieceIndex) { return; }
     gSelectedPieceIndex = pieceIndex;
     gSelectedPieceHasMoved = false;
     drawBoard();
 }
-function isThereAPieceBetween(cell1, cell2) {  
+
+function isThereAPieceBetween(cell1, cell2) {
+   
     var rowBetween = (cell1.row + cell2.row) / 2;
     var columnBetween = (cell1.column + cell2.column) / 2;
     for (var i = 0; i < gNumPieces; i++) {
@@ -95,6 +107,7 @@ function isThereAPieceBetween(cell1, cell2) {
     }
     return false;
 }
+
 function isTheGameOver() {
     for (var i = 0; i < gNumPieces; i++) {
 	if (gPieces[i].row > 2) {
@@ -106,28 +119,41 @@ function isTheGameOver() {
     }
     return true;
 }
+
 function drawBoard() {
     if (gGameInProgress && isTheGameOver()) {
 	endGame();
     }
+
     gDrawingContext.clearRect(0, 0, kPixelWidth, kPixelHeight);
+
     gDrawingContext.beginPath();
+    
+   
     for (var x = 0; x <= kPixelWidth; x += kPieceWidth) {
 	gDrawingContext.moveTo(0.5 + x, 0);
 	gDrawingContext.lineTo(0.5 + x, kPixelHeight);
     }
+    
+   
     for (var y = 0; y <= kPixelHeight; y += kPieceHeight) {
 	gDrawingContext.moveTo(0, 0.5 + y);
 	gDrawingContext.lineTo(kPixelWidth, 0.5 +  y);
     }
+    
+   
     gDrawingContext.strokeStyle = "#ccc";
     gDrawingContext.stroke();
+    
     for (var i = 0; i < 9; i++) {
 	drawPiece(gPieces[i], i == gSelectedPieceIndex);
     }
+
     gMoveCountElem.innerHTML = gMoveCount;
+
     saveGameState();
 }
+
 function drawPiece(p, selected) {
     var column = p.column;
     var row = p.row;
@@ -153,6 +179,7 @@ if (typeof resumeGame != "function") {
 	return false;
     }
 }
+
 function newGame() {
     gPieces = [new Cell(kBoardHeight - 3, 0),
 	       new Cell(kBoardHeight - 2, 0),
@@ -170,11 +197,12 @@ function newGame() {
     gGameInProgress = true;
     drawBoard();
 }
+
 function endGame() {
     gSelectedPieceIndex = -1;
     gGameInProgress = false;
 }
-window.onload=initGame(null,document.getElementById("movecount"));
+
 function initGame(canvasElement, moveCountElement) {
     if (!canvasElement) {
         canvasElement = document.createElement("canvas");
