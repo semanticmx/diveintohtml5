@@ -3,17 +3,21 @@
     font-size: 15px;
     height: 3%;
 }
-#color{
+#color
+{
     border-radius: 100%;
 }
-#edad{
+#edad
+{
     width: 5%;
     font-size: 15px;
 }
-input{
+input
+{
     margin-top: 2%;    
 }
-label{
+label
+{
     margin-right: 1%;
     text-align: left;
 }

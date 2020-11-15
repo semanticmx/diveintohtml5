@@ -18,6 +18,15 @@
           <p>Download video as <a href="videos/v1.mp4">MP4</a>, <a href="videos/v1.webm">WebM</a>, or <a href="pr6.ogv">Ogg</a>.</p>
         </object>
       </video>
-      <script src="funcion.js"></script>
+      <script>
+        var v = document.getElementById("movie");
+        v.onclick = function() {
+          if (v.paused) {
+            v.play();
+          } else {
+            v.pause();
+          }
+        };
+      </script>
 </body>
 </html>

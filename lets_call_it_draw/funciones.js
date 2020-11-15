@@ -1,4 +1,3 @@
-window.onload=draw;
 function draw() {
     var b_canvas = document.getElementById("rec");
     var b_context = b_canvas.getContext("2d");
@@ -40,7 +39,8 @@ function draw() {
     ctx3.fillRect(50, 25, 150, 100);
     
   }
-function imagen(){
+  function imagen()
+  {
     var canvas = document.getElementById("im");
         var context = canvas.getContext("2d");
         var cat = new Image();
@@ -53,3 +53,4 @@ function imagen(){
   }
   }
 }
+  window.onload=draw;
