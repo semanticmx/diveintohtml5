@@ -17,7 +17,4 @@ function muestra()
     s=s+"\n"+document.getElementById("email").value;
     s=s+"\n"+document.getElementById("color").value;
     s=s+"\n"+document.getElementById("opciones").value;
-    
-    alert(s);
-
 }
