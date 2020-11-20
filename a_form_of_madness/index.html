@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos del capitulo 9 </title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <form method="POST">       
+       <label >Nombre</label> <input type="text" placeholder="Ingresa nombre" id="nombre">
+        <br>
+       <label >Edad</label>  <input type="number" min="18" id="edad">
+        <br>
+       <label >Fecha de nacimiento</label> <input type="date" id="fecha">
+       <br>
+       <label >Correo</label> <input type="email" placeholder="Ingresa email" id="email">
+       <br>
+       <label >Selecciona genero</label> <input type="radio" name="genero" value="fe" >femenino <input type="radio" name="genero" value="ma">masculino
+       <br> 
+       <label>Profesion:
+       <input name=hp  list=prof placeholder="Selecciona una opción" id="opciones"></label>
+       <datalist id=prof>
+         <option value="Maestro">
+         <option value="Licenciado">
+         <option value="Ingeniero">
+       </datalist>
+       <br>
+       <label >selecciona tu color favotrito</label> <input type="color" id="color">
+       <br>
+       <input type="submit" value="enviar" id="enviar">
+    </form>
+    <p id="datos"></p>
+    <script src="funciones.js"></script>
+</body>
+</html>
